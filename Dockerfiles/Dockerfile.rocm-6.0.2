@@ -41,5 +41,5 @@ CMD cd /horde-worker-reGen && \
     else \
       ./horde_worker_regen/amd_go_fast/install_amd_go_fast.sh & \
     fi && \
-    python download_models.py -e && \
-    python run_worker.py -e
+    python download_models.py $(if [ ! -e bridgeData.yaml ]; then echo -e; fi) && \
+    python run_worker.py $(if [ ! -e bridgeData.yaml ]; then echo -e; fi)
