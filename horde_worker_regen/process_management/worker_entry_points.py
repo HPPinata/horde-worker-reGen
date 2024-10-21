@@ -59,7 +59,7 @@ def start_inference_process(
                 f"and amd_gpu={amd_gpu}",
             )
 
-            extra_comfyui_args = ["--disable-smart-memory"]
+            #extra_comfyui_args = ["--disable-smart-memory"]
 
             #if amd_gpu:
                 #extra_comfyui_args.append("--use-split-cross-attention")
