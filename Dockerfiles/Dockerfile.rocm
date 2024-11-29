@@ -65,7 +65,8 @@ RUN --mount=type=cache,target="${PIP_CACHE_DIR}",sharing=locked,id=pip-cache \
     pip uninstall -y pynvml nvidia-ml-py
 
 RUN wget https://gist.githubusercontent.com/eebssk1/12c7662536d5873005c49c8614e23604/raw/eac06b6d4251c66b6d1d50ba648bdbb7f865e8e3/libfksm.c; \
-    make libfksm
+    gcc -c -Wall -Werror -fpic libfksm.c; \
+    gcc -shared -o libfksm.so libfksm.o
 
 # Stage 3: Final stage
 FROM builder AS final
