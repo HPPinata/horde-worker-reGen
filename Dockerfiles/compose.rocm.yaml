@@ -11,8 +11,9 @@ services:
         - GIT_OWNER=Haidra-Org
     container_name: reGen
     tty: true
-    #environment:
+    environment:
     #  - FLASH_ATTENTION_USE_TRITON_ROCM=TRUE
+      - LD_PRELOAD=/horde-worker-reGen/libfksm.so
     group_add:
       - video
     volumes:
