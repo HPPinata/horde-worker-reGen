@@ -20,7 +20,8 @@ RUN apt-get update && \
     python${PYTHON_VERSION}-venv \
     python${PYTHON_VERSION}-dev \
     python${PYTHON_VERSION}-distutils \
-    ninja-build \
+    build-essential \
+    wget \
     rocm \
     git && \
     apt-get clean && \
@@ -62,6 +63,10 @@ RUN --mount=type=cache,target="${PIP_CACHE_DIR}",sharing=locked,id=pip-cache \
         pip install opencv-python-headless -r requirements.rocm.txt -U --extra-index-url "https://download.pytorch.org/whl/rocm${ROCM_VERSION_SHORT}"; \
     fi && \
     pip uninstall -y pynvml nvidia-ml-py
+
+RUN wget https://gist.githubusercontent.com/eebssk1/12c7662536d5873005c49c8614e23604/raw/eac06b6d4251c66b6d1d50ba648bdbb7f865e8e3/libfksm.c; \
+    make libfksm
+
 # Stage 3: Final stage
 FROM builder AS final
 
