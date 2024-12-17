@@ -44,8 +44,6 @@ else
  ${SCRIPT_DIR}/bin/micromamba run -r "$SCRIPT_DIR/conda" -n linux python -s -m pip install -r "$SCRIPT_DIR/requirements.rocm.txt" -U --extra-index-url https://download.pytorch.org/whl/rocm6.3
 fi
 
-${SCRIPT_DIR}/bin/micromamba run -r "$SCRIPT_DIR/conda" -n linux python -s -m pip uninstall -y pynvml nvidia-ml-py
-
 # Check if we are running in WSL2
 WSL_KERNEL=$(uname -a | grep -c -e WSL2 )
 if [ "$WSL_KERNEL" -gt 0 ]; then
