@@ -11,8 +11,9 @@ services:
         - GIT_OWNER=HPPinata
     container_name: reGen
     tty: true
-    #environment:
-    #  - FLASH_ATTENTION_TRITON_AMD_ENABLE=TRUE
+    environment:
+      - FLASH_ATTENTION_TRITON_AMD_ENABLE=FALSE
+      - TORCH_ROCM_AOTRITON_ENABLE_EXPERIMENTAL=1
     group_add:
       - video
     volumes:
