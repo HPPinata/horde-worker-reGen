@@ -29,6 +29,8 @@ if [ ! -z "${ROCM_VERSION_SHORT}" ]; then
     #export PYTORCH_TUNABLEOP_ENABLED=1
     export MIOPEN_FIND_MODE="FAST"
     #export PYTORCH_HIP_ALLOC_CONF="garbage_collection_threshold:0.8,max_split_size_mb:512,expandable_segments:True"
+    export EXTRA_CLI_ARGS=("--amd")
+
 elif [ ! -z "${CUDA_VERSION_SHORT}" ]; then
     # CUDA environment
     export GPU_TYPE="cuda"
@@ -53,9 +55,9 @@ fi
 if [ -e bridgeData.yaml ]; then
     # There is a bridgeData.yaml file, we'll load from that
     python download_models.py
-    exec python run_worker.py
+    exec python run_worker.py ${EXTRA_CLI_ARGS[@]}
 else
     # No bridgeData.yaml file, we'll use environment variables
     python download_models.py -e
-    exec python run_worker.py -e
+    exec python run_worker.py -e ${EXTRA_CLI_ARGS[@]}
 fi
