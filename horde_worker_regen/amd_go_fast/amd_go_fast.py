@@ -44,6 +44,7 @@ try:
             causal=c,
         )
         assert isinstance(result, Tensor)
+        logger.debug("# # # Patched SDPA with Flash Attention # # #")
         return result.transpose(1, 2)
 
     _patch_sdpa(sdpa_hijack_flash)
