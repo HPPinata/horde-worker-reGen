@@ -2,9 +2,9 @@ services:
   regen:
     build:
       context: ./
-      dockerfile: ./Dockerfile.rocm
+      dockerfile: ./Dockerfile.rocm.test
       args:
-        - ROCM_VERSION=6.2.1
+        - ROCM_VERSION=6.2.4
         - PYTHON_VERSION=3.11
         - USE_PIP_CACHE=true
         - GIT_BRANCH=mytest
@@ -12,8 +12,8 @@ services:
     container_name: reGen
     tty: true
     environment:
-      #- FLASH_ATTENTION_TRITON_AMD_ENABLE=TRUE
-      - TORCH_ROCM_AOTRITON_ENABLE_EXPERIMENTAL=1
+      - FLASH_ATTENTION_TRITON_AMD_ENABLE=FALSE
+      #- TORCH_ROCM_AOTRITON_ENABLE_EXPERIMENTAL=1
     group_add:
       - video
     volumes:
