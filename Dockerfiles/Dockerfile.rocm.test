@@ -1,5 +1,5 @@
 # Stage 1: Base environment setup
-ARG ROCM_VERSION=6.1.2
+ARG ROCM_VERSION=6.2.4
 FROM ubuntu:24.04 AS base
 
 USER root
@@ -12,7 +12,7 @@ ENV APP_HOME=/horde-worker-reGen
 
 RUN apt-get update && \
     apt-get install -y wget && \
-    wget -r -nd -np -A 'amdgpu-install*all.deb' "https://repo.radeon.com/amdgpu-install/latest/ubuntu/noble/" && \
+    wget -r -nd -np -A 'amdgpu-install*all.deb' "https://repo.radeon.com/amdgpu-install/$ROCM_VERSION/ubuntu/noble/" && \
     apt-get install -y ./amdgpu-install*all.deb && \
     amdgpu-install -y --usecase=rocm --no-dkms
 
