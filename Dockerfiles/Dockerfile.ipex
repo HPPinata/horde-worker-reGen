@@ -11,7 +11,7 @@ ENV APP_HOME=/horde-worker-reGen
 
 # Add Intel repo
 RUN apt-get update && \
-    apt-get install -y gpg-agent wget && \
+    apt-get install -y gpg gpg-agent wget && \
     wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
     | gpg --dearmor > /tmp/intel-for-pytorch-gpu-dev-keyring.gpg && \
     mv /tmp/intel-for-pytorch-gpu-dev-keyring.gpg /usr/share/keyrings && \
