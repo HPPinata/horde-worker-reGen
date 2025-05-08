@@ -4,13 +4,12 @@ FROM ubuntu:24.04 AS base
 USER root
 WORKDIR /
 
-#ARG ROCM_VERSION=6.2.4
 ARG DEBIAN_FRONTEND=noninteractive
 ARG PYTHON_VERSION=3.11
 ENV PYTHON_VERSION=${PYTHON_VERSION}
-#ENV ROCM_VERSION=${ROCM_VERSION}
 ENV APP_HOME=/horde-worker-reGen
 
+# Add Intel repo
 RUN apt-get update && \
     apt-get install -y gpg-agent wget && \
     wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
@@ -19,6 +18,7 @@ RUN apt-get update && \
     echo "deb [signed-by=/usr/share/keyrings/intel-for-pytorch-gpu-dev-keyring.gpg] https://apt.repos.intel.com/intel-for-pytorch-gpu-dev all main" > /tmp/intel-for-pytorch-gpu-dev.list && \
     mv /tmp/intel-for-pytorch-gpu-dev.list /etc/apt/sources.list.d
 
+# Install dependencies
 RUN apt-get update && \
     apt-get install -y software-properties-common && \
     add-apt-repository ppa:deadsnakes/ppa && \
