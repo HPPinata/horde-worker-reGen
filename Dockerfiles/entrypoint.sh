@@ -38,8 +38,10 @@ elif [ ! -z "${CUDA_VERSION_SHORT}" ]; then
     export PYTORCH_EXTRA_INDEX="https://download.pytorch.org/whl/cu${CUDA_VERSION_SHORT}"
     export REQUIREMENTS_FILE="requirements.txt"
 else
-    echo "Neither ROCm nor CUDA environment variables found in /env_vars. Exiting."
-    exit 1
+    # IPEX environment
+    export GPU_TYPE="ipex"
+    export PYTORCH_EXTRA_INDEX="https://download.pytorch.org/whl/xpu"
+    export REQUIREMENTS_FILE="requirements.txt"
 fi
 
 python -m pip install -r ${REQUIREMENTS_FILE} -U --extra-index-url ${PYTORCH_EXTRA_INDEX}
