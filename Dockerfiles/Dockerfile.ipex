@@ -40,9 +40,9 @@ ARG GIT_BRANCH=main
 ARG GIT_OWNER=Haidra-Org
 
 RUN echo "export GIT_BRANCH=${GIT_BRANCH}" >> /env_vars && \
-    echo "export GIT_OWNER=${GIT_OWNER}" >> /env_vars && \
-    echo ". /opt/intel/oneapi/pytorch-gpu-dev-0.5/oneapi-vars.sh" >> /env_vars && \
-    echo ". /opt/intel/oneapi/pti/0.9/env/vars.sh" >> /env_vars
+    echo "export GIT_OWNER=${GIT_OWNER}" >> /env_vars
+#    echo ". /opt/intel/oneapi/pytorch-gpu-dev-0.5/oneapi-vars.sh" >> /env_vars && \
+#    echo ". /opt/intel/oneapi/pti/0.9/env/vars.sh" >> /env_vars
 
 # Clone the repository
 RUN git clone https://github.com/${GIT_OWNER}/horde-worker-reGen.git ${APP_HOME} && \
