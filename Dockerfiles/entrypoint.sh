@@ -42,6 +42,7 @@ else
     export GPU_TYPE="ipex"
     export PYTORCH_EXTRA_INDEX="https://pytorch-extension.intel.com/release-whl/stable/xpu/us/"
     export REQUIREMENTS_FILE="requirements.ipex.txt"
+    python -m pip install intel-extension-for-pytorch==2.7.10+xpu oneccl_bind_pt==2.7.0+xpu --extra-index-url https://pytorch-extension.intel.com/release-whl/stable/xpu/us/
 fi
 
 python -m pip install -r ${REQUIREMENTS_FILE} -U --extra-index-url ${PYTORCH_EXTRA_INDEX}
