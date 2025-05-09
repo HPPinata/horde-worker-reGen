@@ -1,10 +1,7 @@
-torch==2.5.1+cxx11.abi
-torchvision==0.20.1+cxx11.abi
-torchaudio==2.5.1+cxx11.abi
-intel-extension-for-pytorch==2.5.10+xpu
-oneccl_bind_pt==2.5.0+xpu 
+torch==2.7
+torchvision==0.22.0
+torchaudio==2.7.0
 
-#torch==2.5.0
 qrcode==7.4.2 # >8 breaks horde-engine 2.20.12 via the qr code generation nodes
 
 certifi # Required for SSL cert resolution
