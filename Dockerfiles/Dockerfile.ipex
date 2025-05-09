@@ -10,13 +10,13 @@ ENV PYTHON_VERSION=${PYTHON_VERSION}
 ENV APP_HOME=/horde-worker-reGen
 
 # Add Intel repo
-RUN apt-get update && \
-    apt-get install -y gpg gpg-agent wget && \
-    wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
-    | gpg --dearmor > /tmp/intel-for-pytorch-gpu-dev-keyring.gpg && \
-    mv /tmp/intel-for-pytorch-gpu-dev-keyring.gpg /usr/share/keyrings && \
-    echo "deb [signed-by=/usr/share/keyrings/intel-for-pytorch-gpu-dev-keyring.gpg] https://apt.repos.intel.com/intel-for-pytorch-gpu-dev all main" > /tmp/intel-for-pytorch-gpu-dev.list && \
-    mv /tmp/intel-for-pytorch-gpu-dev.list /etc/apt/sources.list.d
+#RUN apt-get update && \
+#    apt-get install -y gpg gpg-agent wget && \
+#    wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
+#    | gpg --dearmor > /tmp/intel-for-pytorch-gpu-dev-keyring.gpg && \
+#    mv /tmp/intel-for-pytorch-gpu-dev-keyring.gpg /usr/share/keyrings && \
+#    echo "deb [signed-by=/usr/share/keyrings/intel-for-pytorch-gpu-dev-keyring.gpg] https://apt.repos.intel.com/intel-for-pytorch-gpu-dev all main" > /tmp/intel-for-pytorch-gpu-dev.list && \
+#    mv /tmp/intel-for-pytorch-gpu-dev.list /etc/apt/sources.list.d
 
 # Install dependencies
 RUN apt-get update && \
@@ -28,7 +28,7 @@ RUN apt-get update && \
     python${PYTHON_VERSION}-venv \
     python${PYTHON_VERSION}-dev \
     python${PYTHON_VERSION}-distutils \
-    intel-for-pytorch-gpu-dev-0.5 intel-pti-dev-0.9 \
+#    intel-for-pytorch-gpu-dev-0.5 intel-pti-dev-0.9 \
     git && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
