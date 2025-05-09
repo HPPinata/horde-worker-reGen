@@ -40,8 +40,8 @@ elif [ ! -z "${CUDA_VERSION_SHORT}" ]; then
 else
     # IPEX environment
     export GPU_TYPE="ipex"
-    export PYTORCH_EXTRA_INDEX="https://download.pytorch.org/whl/xpu"
-    export REQUIREMENTS_FILE="requirements.txt"
+    export PYTORCH_EXTRA_INDEX="https://pytorch-extension.intel.com/release-whl/stable/xpu/us/"
+    export REQUIREMENTS_FILE="requirements.ipex.txt"
 fi
 
 python -m pip install -r ${REQUIREMENTS_FILE} -U --extra-index-url ${PYTORCH_EXTRA_INDEX}
