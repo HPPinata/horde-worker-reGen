@@ -3,7 +3,7 @@ set -e
 
 # Source environment variables from /env_vars file
 if [ -f "/env_vars" ]; then
-    . /env_vars
+    . /env_vars && printenv
 else
     echo "/env_vars file not found. Exiting."
     exit 1
