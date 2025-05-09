@@ -1,6 +1,4 @@
-torch==2.7+xpu
-torchvision==0.22.0+xpu
-torchaudio==2.7.0+xpu
+torch==2.6+xpu
 
 qrcode==7.4.2 # >8 breaks horde-engine 2.20.12 via the qr code generation nodes
 
