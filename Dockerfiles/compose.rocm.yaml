@@ -2,7 +2,7 @@ services:
   regen:
     build:
       context: ./
-      dockerfile: ./Dockerfile.rocm.test
+      dockerfile: ./Dockerfile.rocm
       args:
         - ROCM_VERSION=6.3.4
         - PYTHON_VERSION=3.11
